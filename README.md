@@ -3,6 +3,8 @@
 ## Table of Contents
 
 - [Instructions](#instructions)
+- [Refrences](#Refrences)
+- [Author](#Author)
 
 ## Instructions
 
