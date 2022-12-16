@@ -24,5 +24,8 @@ Detect the element location relative to the viewport using built-in function:
 - [MDN](https://developer.mozilla.org/en-US/)
 - [StackOverFlow](https://stackoverflow.com/)
 
+## License
+- **Landing Page License version 1**
+
 ## Author
 - **Noha Hamdy**
