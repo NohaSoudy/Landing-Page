@@ -13,8 +13,10 @@
 - Add an active state to your navigation items when a section is in the viewport.
 Detect the element location relative to the viewport using
 ...
+
 .getBoundingClientRect()
 ...
+
 built-in function.
 
 
