@@ -13,13 +13,13 @@
   <body>
     <!-- HTML Follows BEM naming conventions 
   IDs are only used for sections to connect menu achors to sections -->
+    <!-- To Add New Section-->
+    <button onclick="addNewSection()" id="addNewSection" title="Add New Section">Add New Section</button>
+    <!-- To Go to the top of Page-->
+    <button onclick="topPage()" id="topBtn" title="Go to top">Top</button>
     <header class="page__header">
       <nav class="navbar__menu">
         <!-- Navigation starts as empty UL that will be populated with JS -->
-        <div>
-          <button onclick="addNewSection()" id="addNewSection" title="Add New Section">Add New Section</button>
-          <button onclick="topPage()" id="topBtn" title="Go to top">Top</button>
-        </div>
         <ul id="navbar__list"></ul>
       </nav>
     </header>
