@@ -14,3 +14,6 @@ For specific, detailed instructions, look at the project instructions in the Uda
 
 ## Refrences
 - [YouTube](https://www.youtube.com/)
+- [W3School](https://www.w3schools.com/)
+- [MDN](https://developer.mozilla.org/en-US/)
+- [StackOverFlow](https://stackoverflow.com/)
