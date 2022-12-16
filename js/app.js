@@ -131,3 +131,13 @@ function scrollTop() {
 function topPage() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+//Add New Section
+function addNewSection() {
+  let nav = document.getElementById("navbar__list");
+  let sectionNode = document.createElement("li");
+  const childIncrement = nav.childElementCount + 1;
+  sectionNode.innerHTML = "<a href='#section" + childIncrement + "' id='nav_section" + childIncrement + "' class='menu__link'>Section " + childIncrement + "</a>";
+  nav.appendChild(sectionNode);
+  allSections.push(sectionNode);
+}

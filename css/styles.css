@@ -240,3 +240,18 @@ section.your-active-class .landing__container::after {
 #topBtn:hover {
   background-color: #555;
 }
+
+#addNewSection {
+  position: fixed;
+  bottom: 20px;
+  right: 117px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #cccc11;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
