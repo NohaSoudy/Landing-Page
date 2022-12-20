@@ -22,7 +22,8 @@
  * Define Global Variables
  *
  */
-var allSections = document.querySelectorAll("section");
+var allSectionsNode = document.querySelectorAll("section");
+var allSectionArray = [...allSectionsNode];
 var allClassesNavigation = document.getElementsByClassName("menu__link");
 /**
  * End Global Variables
@@ -38,21 +39,26 @@ var allClassesNavigation = document.getElementsByClassName("menu__link");
 
 // build the nav
 let nav = document.getElementById("navbar__list");
-for (let i = 0; i < allSections.length; i++) {
+for (let i = 0; i < allSectionArray.length; i++) {
   let sectionNode = document.createElement("li");
-  sectionNode.innerHTML = "<a href='#" + allSections[i].id.toLowerCase() + "' id='nav_" + allSections[i].id.toLowerCase() + "' class='menu__link'>" + allSections[i].getAttribute("data-nav") + "</a>";
+  sectionNode.innerHTML =
+    "<a href='#" + allSectionArray[i].id.toLowerCase() + "' id='nav_" + allSectionArray[i].id.toLowerCase() + "' class='menu__link'>" + allSectionArray[i].getAttribute("data-nav") + "</a>";
   nav.appendChild(sectionNode);
 }
 // Add class 'active' to section when near top of viewport
-for (let i = 0; i < allSections.length; i++) {
-  const element = allSections[i];
-  document.addEventListener("scroll", (event) => {
-    event.preventDefault();
-    var nav_section = document.querySelector("#" + element.id + "");
-    scrollWindowToSection(allClassesNavigation, nav_section);
-    // when click button scroll to top
-    scrollTop();
-  });
+addActiveClassScrollEvent();
+
+function addActiveClassScrollEvent() {
+  for (let i = 0; i < allSectionArray.length; i++) {
+    const element = allSectionArray[i];
+    document.addEventListener("scroll", (event) => {
+      event.preventDefault();
+      var nav_section = document.querySelector("#" + element.id + "");
+      scrollWindowToSection(allClassesNavigation, nav_section);
+      // when click button scroll to top
+      scrollTop();
+    });
+  }
 }
 
 function scrollWindowToSection(elem, nav_elem) {
@@ -77,14 +83,18 @@ function scrollWindowToSection(elem, nav_elem) {
   }
 }
 // Scroll to anchor ID using scrollTO event
-for (let i = 0; i < allClassesNavigation.length; i++) {
-  const element = allClassesNavigation[i];
-  element.addEventListener("click", (event) => {
-    event.preventDefault();
-    var link = document.querySelector(element.hash);
-    var nav_section = document.querySelector("#" + element.id + "");
-    scrollToSection(link, nav_section);
-  });
+addActiveClassClickEvent();
+
+function addActiveClassClickEvent() {
+  for (let i = 0; i < allClassesNavigation.length; i++) {
+    const element = allClassesNavigation[i];
+    element.addEventListener("click", (event) => {
+      event.preventDefault();
+      var link = document.querySelector(element.hash);
+      var nav_section = document.querySelector("#" + element.id + "");
+      scrollToSection(link, nav_section);
+    });
+  }
 }
 
 //Scroll to the clicked section
@@ -139,5 +149,38 @@ function addNewSection() {
   const childIncrement = nav.childElementCount + 1;
   sectionNode.innerHTML = "<a href='#section" + childIncrement + "' id='nav_section" + childIncrement + "' class='menu__link'>Section " + childIncrement + "</a>";
   nav.appendChild(sectionNode);
-  allSections.push(sectionNode);
+  addNewSectionStructure();
+}
+function addNewSectionStructure() {
+  let sectionStructure = document.querySelector("main");
+  let sectionElement = document.createElement("section");
+  sectionElement.setAttribute("id", `section${allSectionArray.length + 1}`);
+  sectionElement.setAttribute("data-nav", `Section ${allSectionArray.length + 1}`);
+
+  let divElement = document.createElement("div");
+  divElement.classList.add("landing__container");
+
+  let headerElement = document.createElement("h2");
+  headerElement.innerHTML = `Section ${allSectionArray.length + 1}`;
+  divElement.appendChild(headerElement);
+
+  const sectionFirstContent = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec
+  eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut
+  pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et
+  elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.
+`;
+  const sectionSecondContent = ` Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum
+  fermentum consectetur porttitor. Suspendisse imperdiet porttitor tortor, eget elementum tortor mollis non.`;
+  let paragraphFirstElement = document.createElement("p");
+  paragraphFirstElement.innerHTML = sectionFirstContent;
+
+  let paragraphSecondElement = document.createElement("p");
+  paragraphSecondElement.innerHTML = sectionSecondContent;
+  divElement.appendChild(paragraphFirstElement);
+  divElement.appendChild(paragraphSecondElement);
+  sectionElement.appendChild(divElement);
+  sectionStructure.appendChild(sectionElement);
+  allSectionArray.push(sectionElement);
+  addActiveClassScrollEvent();
+  addActiveClassClickEvent();
 }

@@ -20,6 +20,8 @@
 .getBoundingClientRect()
 ```
 
+- We add New Feature "Add New Section" dynamically to navigation bar and in body content.
+
 ## Refrences
 
 - [YouTube](https://www.youtube.com/)
@@ -29,7 +31,7 @@
 
 ## License
 
-- **Landing Page License version 1**
+- **Landing Page License version 1.1**
 
 ## Author
 
